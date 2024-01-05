@@ -2,11 +2,14 @@ import React from 'react'
 import { GoSearch } from "react-icons/go";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import {toggleSideBar} from "../redux/slices/appSlice"
 const Header = () => {
+  const dispatch = useDispatch()
   return (
-    <div className="grid grid-flow-col px-8 py-3 shadow-xl ">
+    <div className="grid grid-flow-col h-[10vh] px-8 py-3 shadow-xl ">
       <div className="col-span-1 flex gap-5 items-center">
-        <div>
+        <div onClick={() => dispatch(toggleSideBar())}>
           <RxHamburgerMenu className="text-2xl" />
         </div>
         <img
@@ -18,11 +21,11 @@ const Header = () => {
       <div className="col-span-10 w-full flex justify-center ">
         <input
           type="text"
-          className="w-1/2 border p-[5px] outline-none indent-9 text-xl align-middle border-gray-400 border-r-0 rounded-l-full"
+          className="w-1/2 border h-[83%] my-auto outline-none indent-9 text-xl  border-gray-400 border-r-0 rounded-l-full"
           name=""
           id=""
         />
-        <button className="py-2 px-6 border shadow-xl rounded-r-full bg-gray-300 border-gray-400">
+        <button className="py-1 px-6 h-[83%] my-auto border shadow-xl rounded-r-full bg-gray-300 border-gray-400">
           <GoSearch />
         </button>
       </div>
