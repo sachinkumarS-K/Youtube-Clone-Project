@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.no-scrollbar ::-webkit-scrollbar-button{
-    width: 5px;
-  height: 8px;
-  background-color: #d11717; 
-     
+
+@layer base {
+::-webkit-scrollbar-thumb{
+@apply  bg-transparent shadow-sm
+}
+::-webkit-scrollbar{
+@apply w-[10px] bg-transparent
+}
+::-webkit-scrollbar-thumb{
+@apply rounded-lg bg-gray-400 /*color trackbar*/
+}
 }

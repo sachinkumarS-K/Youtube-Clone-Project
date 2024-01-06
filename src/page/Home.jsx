@@ -1,14 +1,19 @@
 import React from 'react'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
+import VideoContainer from '../components/VideoContainer'
+import Sidebar from '../components/Sidebar';
+import SmallSideBar from '../components/SmallSideBar';
+import ButtonList from '../components/ButtonList';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+  const isSideBarOpen = useSelector((state) => state.app.isSideBarOpen); 
   return (
-    <div>
-      <Header />
-      <Sidebar />
+    <div className='w-full'>
+      {isSideBarOpen ? <Sidebar /> : <SmallSideBar />}
+      <ButtonList />
+      <VideoContainer />
     </div>
-  )
+  );
 }
 
 export default Home
