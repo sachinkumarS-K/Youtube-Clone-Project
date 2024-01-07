@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Google_Api_Key } from '../utils/constants';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +10,7 @@ const VideoCard = ({ videoData }) => {
         isSideBarOpen ? " " : " "
       }  hover:cursor-pointer w-full h-[25rem] flex flex-col items-start justify-self-stretch  `}
     >
-      <Link to={`/watch/v/${videoData.id}`} className="w-full aspect-auto">
+      <Link to={`/watch?v=${videoData.id}`} className="w-full aspect-auto">
         <img
           className="w-full h-[75%]  shadow-lg rounded-xl object-cover"
           src={videoData.snippet.thumbnails.high.url}

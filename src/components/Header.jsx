@@ -32,7 +32,7 @@ const Header = () => {
           <GoSearch />
         </button>
       </div>
-      <div className="col-span-1 my-auto">
+      <div className="col-span-1 place-self-end cursor-pointer my-auto">
         <FaUserCircle className="text-3xl" />
       </div>
     </div>

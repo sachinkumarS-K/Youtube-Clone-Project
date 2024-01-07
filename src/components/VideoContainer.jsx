@@ -8,7 +8,7 @@ const VideoContainer = () => {
      async function getData() {
           const data = await fetch(youtubeApi);
           const res = await data.json();
-          console.log(res);
+        
           setVideos(res.items)
      }
      useEffect(() => {

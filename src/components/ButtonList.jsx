@@ -8,7 +8,7 @@ const ButtonList = () => {
     <div
       className={`${
         isSideBarOpen ? "ml-[17%]" : " ml-20 pl-[6%]"
-      } mt-[10vh] fixed   w-full overflow-x-scroll bg-white mb-[10rem] `}
+      } mt-[9vh] fixed z-10 py-3   w-full overflow-x-hidden bg-white mb-[10rem] `}
     >
       <div className="flex gap-7 ">
         <Buttons btnText={"All"} />
@@ -18,7 +18,7 @@ const ButtonList = () => {
         <Buttons btnText={"Gaming"} />
         <Buttons btnText={"Tailwind"} />
         <Buttons btnText={"Mixes"} />
-        <Buttons btnText={"Bharti Singh"} />
+        {/* <Buttons btnText={"Bharti Singh"} /> */}
         <Buttons btnText={"Live"} />
         <Buttons btnText={"Big Boss"} />
         <Buttons btnText={"React"} />

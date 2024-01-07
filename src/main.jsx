@@ -10,7 +10,7 @@ const appRouter = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element = {<App />}>
         <Route path='' element={<Home />} />
-        <Route path='/watch/v/:id' element = {<WatchPage />} />
+        <Route path='/watch' element = {<WatchPage />} />
      </Route>
     )
   )

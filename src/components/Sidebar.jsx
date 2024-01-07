@@ -20,7 +20,7 @@ import { FaShirt } from "react-icons/fa6";
 import { MdPodcasts } from "react-icons/md";
 const Sidebar = () => {
   return (
-    <div className="w-[15%] fixed shadow-xl h-[90vh] mt-[10vh] hover:overflow-y-scroll scroll-smooth scroll">
+    <div className="w-[15%] fixed top-0 z-10 shadow-xl h-[90vh] mt-[10vh] hover:overflow-y-scroll bg-white scroll-smooth scroll">
       <div>
         <div className=" mt-5 flex flex-col gap-3">
           <div className="flex flex-col gap-3 px-5">
