@@ -18,21 +18,25 @@ import { BiTrophy } from "react-icons/bi";
 import { BsLightbulb } from "react-icons/bs";
 import { FaShirt } from "react-icons/fa6";
 import { MdPodcasts } from "react-icons/md";
+import { Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
-    <div className="w-[15%] fixed top-0 z-10 shadow-xl h-[90vh] mt-[10vh] hover:overflow-y-scroll bg-white scroll-smooth scroll">
-      <div>
+    <div className= "">
+      <div className="w-[15%] fixed top-0 z-10 hidden md:block lg:block shadow-xl h-[90vh] mt-[10vh] hover:overflow-y-scroll bg-white scroll-smooth scroll ">
         <div className=" mt-5 flex flex-col gap-3">
-          <div className="flex flex-col gap-3 px-5">
-            <div className="flex gap-3 items-center">
+          <div className="flex flex-col gap-3  w-11/12 mx-auto">
+            <Link
+              to="/"
+              className="flex gap-3 items-center rounded-lg hover:bg-gray-200 px-3 py-2"
+            >
               <GoHome className="text-xl text-gray-500" />
               <p className="font-semibold text-lg">Home</p>
-            </div>
-            <div className="flex gap-3 items-center">
+            </Link>
+            <div className="flex gap-3 items-center rounded-lg hover:bg-gray-200 px-3 py-2">
               <SiYoutubeshorts className="text-xl text-gray-500" />
               <p className="font-semibold text-lg">Shorts</p>
             </div>
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center rounded-lg hover:bg-gray-200 px-3 py-2">
               <MdSubscriptions className="text-xl text-gray-500" />
               <p className="font-semibold text-lg">Subscription</p>
             </div>

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-     isSideBarOpen : true ,
+     isSideBarOpen: true,
+     isSearchOpen : false
 }
 
 const appSlice = createSlice({
@@ -16,9 +17,13 @@ const appSlice = createSlice({
           },
           opneSideBar: (state) => {
                state.isSideBarOpen = true 
+          },
+          setSearchOpen: (state , actions) => {
+               state.isSearchOpen = actions.payload;
           }
      }
 });
 
-export const { toggleSideBar, closeSideBar, opneSideBar } = appSlice.actions;
+export const { toggleSideBar, closeSideBar, opneSideBar, setSearchOpen } =
+  appSlice.actions;
 export default appSlice.reducer;

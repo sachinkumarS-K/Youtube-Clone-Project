@@ -11,14 +11,14 @@ const WatchPage = () => {
 
   async function getData() {
     const res = await fetch(
-      "https://www.googleapis.com/youtube/v3/i18nLanguages"
+      "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UCBnxEdpoZwstJqC1yZpOjRA&key=AIzaSyCP-1yrRADYrQaFgLbeZwffkkEG3TBMBEw"
     );
     const json = await res.json();
     console.log(json)
   }
   useEffect(() => {
     dispatch(closeSideBar());
-  
+  //getData()
   } , [])
     
   return (
@@ -34,9 +34,9 @@ const WatchPage = () => {
             "v"
           )}`}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullscreen
+          allowFullScreen
         ></iframe>
       </div>
     </div>
