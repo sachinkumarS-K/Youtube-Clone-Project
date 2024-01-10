@@ -12,7 +12,6 @@ import { chacheResults } from '../redux/slices/searchSlice';
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
-
   const [searchQuery , setSeacrchQuery] = useState("")
   const [suggestion, setSuggestion] = useState([]);
   const searchCache = useSelector(state => state.search);
@@ -36,7 +35,14 @@ const Header = () => {
   async function getSearchSuggestion() {
     //console.log(searchQuery)
     const res = await axios.get(youtubeSearchApi + searchQuery);
-    setSuggestion(res.data[1]);
+    //console.log(res.data)
+       const searchSuggestions = [];
+       res.data.split("[").forEach((ele, index) => {
+         if (!ele.split('"')[1] || index === 1) return;
+         return searchSuggestions.push(ele.split('"')[1]);
+       });
+       //console.log(searchSuggestions.slice(0,10));
+     setSuggestion(searchSuggestions.slice(0, 10));
     dispatch(
       chacheResults({
         [searchQuery]: res.data[1],

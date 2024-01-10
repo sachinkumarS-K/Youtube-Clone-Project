@@ -6,6 +6,6 @@ export const searchApi =
   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
 
 export const youtubeSearchApi =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://clients1.google.com/complete/search?client=youtube&gs_ri=youtube&ds=yt&q=";
 
   // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=scout on elvish yadav&key=AIzaSyCP-1yrRADYrQaFgLbeZwffkkEG3TBM
