@@ -22,7 +22,7 @@ import { Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <div className= "">
-      <div className="w-[15%] fixed top-0 z-10 hidden md:block lg:block shadow-xl h-[90vh] mt-[10vh] hover:overflow-y-scroll bg-white scroll-smooth scroll ">
+      <div className="lg:w-[15%] fixed top-0 z-10 hidden md:block lg:block shadow-xl h-[90vh] mt-[10vh] hover:overflow-y-scroll bg-white scroll-smooth scroll ">
         <div className=" mt-5 flex flex-col gap-3">
           <div className="flex flex-col gap-3  w-11/12 mx-auto">
             <Link

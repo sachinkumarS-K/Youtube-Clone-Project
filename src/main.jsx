@@ -1,24 +1,34 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Home from './page/Home.jsx'
-import WatchPage from './page/WatchPage.jsx'
+import Spinner from './components/Spinner/Spinner.jsx'
+import ResultPage from './page/ResultPage.jsx'
 
+const WatchPage = lazy(() => import('./page/WatchPage.jsx'))
 const appRouter = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path='/' element = {<App />}>
-        <Route path='' element={<Home />} />
-        <Route path='/watch' element = {<WatchPage />} />
-     </Route>
-    )
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route path="" element={<Home />} />
+      <Route
+        path="/watch"
+        element={
+          <Suspense fallback = {<Spinner />} >
+            <WatchPage />
+          </Suspense>
+        }
+      />
+      <Route path='/results' element = {<ResultPage />} />
+    </Route>
   )
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+
     
      <RouterProvider router={appRouter} />
  
-  </React.StrictMode>
+
 );

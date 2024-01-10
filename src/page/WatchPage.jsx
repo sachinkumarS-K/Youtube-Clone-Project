@@ -27,9 +27,9 @@ const WatchPage = () => {
       <div className='mt-20 relative'>
         <iframe
           
-          className='aspect-video translate-x-32 absolute object-cover rounded-xl'
-          width="950"
-          height="480"
+          className='aspect-video w-full  lg:w-[850px] lg:h-[450px] lg:translate-x-32 absolute object-cover rounded-xl'
+         
+         
           src={`https://www.youtube.com/embed/${searchParams.get(
             "v"
           )}`}

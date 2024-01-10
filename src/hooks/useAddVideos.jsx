@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { youtubeApi } from '../utils/constants';
+import { Google_Api_Key, youtubeApi } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addChannelData, addVideos } from '../redux/slices/videoSlice';
 import axios from 'axios';
@@ -12,12 +12,13 @@ const useAddVideos = () => {
          const res = await data.json();
 
          dispatch(addVideos(res.items));
-
+         console.log(res);
          const res1 = await res.items.map((video) => {
            return axios.get(
-             `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${video.snippet.channelId}&key=AIzaSyCP-1yrRADYrQaFgLbeZwffkkEG3TBMBEw`
+             `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${video.snippet.channelId}&key=${Google_Api_Key}`
            );
          });
+         //AIzaSyCP-1yrRADYrQaFgLbeZwffkkEG3TBMBEw
          const json = await axios.all(res1);
 
          const channelData = json.map((data) => data.data);

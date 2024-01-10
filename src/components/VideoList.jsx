@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import VideoCard from './VideoCard'
 import { useSelector } from 'react-redux';
 
 const VideoList = ({ video }) => {
-
   const isSideBarOpen = useSelector((state) => state.app.isSideBarOpen); 
   const channelData = useSelector((state) => state.video.channelData); 
   if (!channelData) return;
@@ -20,6 +19,7 @@ const VideoList = ({ video }) => {
         <VideoCard
           key={card.id}
           videoData={card}
+         
           channelData={channelData[idx]}
         />
       ))}

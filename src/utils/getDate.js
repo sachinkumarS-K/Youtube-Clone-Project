@@ -1,0 +1,8 @@
+export function getDate(d1) {
+     const d2 = new Date()
+  let months;
+  months = (d2.getFullYear() - d1.getFullYear()) * 12;
+  months -= d1.getMonth();
+  months += d2.getMonth();
+  return months <= 0 ? 0 : months;
+}
