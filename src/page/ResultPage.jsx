@@ -25,7 +25,7 @@ const ResultPage = () => {
   }, []);
   return (
     <div>
-      <div className="w-full">
+      <div className="w-full overflow-hidden">
         {isSideBarOpen ? <Sidebar /> : <SmallSideBar />}
         <ButtonList />
       </div>

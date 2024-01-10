@@ -27,23 +27,7 @@ const VideoCard = ({ videoData, channelData }) => {
             src={videoData.snippet.thumbnails.high.url}
           />
         </Link>
-        {/* {active ? (
-          <iframe
-            className="aspect-video w-full   object-cover rounded-xl"
-            src={`https://www.youtube.com/embed/${videoData.id}?autoplay=1&mute=1`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-        ) : (
-          <Link to={`/watch?v=${videoData.id}`} className="  aspect-auto">
-            <img
-              className="w-full h-[75%]  shadow-xl shadow-gray-300 rounded-xl object-cover"
-              src={videoData.snippet.thumbnails.high.url}
-            />
-          </Link>
-        )} */}
+      
       </div>
       <ul className="py-1 lg:-mt-18 -mt-12 lg:px-3  px-1">
         <li className="w-full flex gap-2 items-center font-semibold ">

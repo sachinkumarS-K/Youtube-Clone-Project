@@ -2,18 +2,17 @@ import React, { useEffect, useState } from 'react'
 import VideoList from './VideoList';
 import { useSelector } from 'react-redux';
 import useAddVideos from '../hooks/useAddVideos';
-import Spinner from './Spinner/Spinner';
+import Shimmer from './shimmer/Shimmer';
 
 const VideoContainer = () => {
  
    const video = useSelector((state) => state.video.videoData);
   const isSideBarOpen = useSelector((state) => state.app.isSideBarOpen); 
   useAddVideos();
-     useEffect(() => {     
-     }, [])
+ 
 
   if (!video) {
-       return <Spinner />
+       return <Shimmer />
      }
   return (
     <div

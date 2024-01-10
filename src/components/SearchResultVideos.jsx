@@ -11,7 +11,7 @@ const SearchResultVideos = () => {
       console.log(searchVideos);
   return (
     <div className="w-full">
-      <div className="w-10/12 mx-auto">
+      <div className="w-10/12 mx-auto space-y-2">
         {searchVideos.map((data) => (
           <SearchVideoCard key={data.id.videoId} data={data} />
         ))}

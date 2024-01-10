@@ -9,7 +9,7 @@ const ResultsContainer = () => {
     <div
       className={`${
         isSideBarOpen ? "lg:ml-[15%] lg:w-[85%]" : "ml-[5%] w-[95%]"
-      }    py-9 absolute top-[7rem] `}
+      }    py-9 absolute top-[7rem]  `}
     >
       <ChannelData />
       <SearchResultVideos />
