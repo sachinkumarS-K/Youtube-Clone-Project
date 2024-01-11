@@ -5,12 +5,13 @@ import { Link, NavLink } from 'react-router-dom';
 
 const SearchVideoCard = ({ data }) => {
      const channelData = useSelector((state) => state.video.searchChannelData);
-     const time = Date.parse(data.snippet.publishedAt);
-  
+     const time =(data.snippet.publishedAt);
+ 
      let date = new Date(time);
-     let year = getDate(date) + 1;
-     if (year < 12) {
-          year = `${year} months`
+  let year = getDate(date) + 1;
+   
+     if (year < 7) {
+          year = `${year} days`
      }
      else if (year >= 12 && year<24) {
           year = "1 Years"
@@ -20,14 +21,14 @@ const SearchVideoCard = ({ data }) => {
      }
 
   return (
-    <div className="lg:my-8 flex gap-5 lg:flex-row flex-col">
-      <Link to={`/watch?v=${data.id.videoId}`} className="  aspect-auto">
+    <div className="lg:my-8 flex gap-3 lg:flex-row flex-col">
+      <Link to={`/watch?v=${data.id.videoId}`} className=" ">
         <img
-          className="w-full lg:h-[75%]  shadow-xl shadow-gray-300 rounded-xl object-cover"
+          className="w-full lg:h-[80%]   shadow-xl shadow-gray-300 rounded-xl lg:object-cover"
           src={data.snippet.thumbnails.high.url}
         />
       </Link>
-      <div className=" w-full">
+      <div className=" w-full px-4">
         <p className="text-ellipsis font-normal  text-black text-xl">
           {data.snippet.title}
         </p>
@@ -40,10 +41,12 @@ const SearchVideoCard = ({ data }) => {
             />
           </div>
 
-          <p className="w-full"> {data.snippet.channelTitle} </p>
+          <p className="w-full "> {data.snippet.channelTitle} </p>
         </div>
-        <p className="p-2"> {year} ago . </p>
-        <p className="text-sm opacity-80">{data.snippet.description}</p>
+        <p className="lg:p-2 pb-1 font-semibold"> {year} ago ... </p>
+        <p className="text-sm opacity-80 lg:block md:block hidden">
+          {data.snippet.description}
+        </p>
       </div>
     </div>
   );

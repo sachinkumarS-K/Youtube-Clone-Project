@@ -1,8 +1,9 @@
 export function getDate(d1) {
      const d2 = new Date()
   let months;
-  months = (d2.getFullYear() - d1.getFullYear()) * 12;
-  months -= d1.getMonth();
-  months += d2.getMonth();
-  return months <= 0 ? 0 : months;
+   let Difference_In_Time = d2.getTime() - d1.getTime();
+
+   // To calculate the no. of days between two dates
+   let Diff = Math.round(Difference_In_Time / (1000 * 3600 * 24));
+   return Diff;
 }

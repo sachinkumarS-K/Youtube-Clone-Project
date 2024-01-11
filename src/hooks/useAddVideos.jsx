@@ -12,7 +12,7 @@ const useAddVideos = () => {
          const res = await data.json();
 
          dispatch(addVideos(res.items));
-        
+        console.log(res.items)
          const res1 = await res.items.map((video) => {
            return axios.get(
              `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${video.snippet.channelId}&key=${Google_Api_Key}`
