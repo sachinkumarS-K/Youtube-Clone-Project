@@ -62,7 +62,7 @@ const VideoCard = ({ videoData, channelData }) => {
         <div className="ml-6 pt-1 px-6">
           <li className="lg:text-lg text-sm flex items-center gap-2">
             {" "}
-            {videoData.snippet.channelTitle}{" "}
+            {videoData.snippet.channelTitle}
             <IoIosCheckmarkCircle className="text-gray-400 text-sm " />
           </li>
         </div>

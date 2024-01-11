@@ -8,7 +8,7 @@ const SearchResultVideos = () => {
      const data = useSelector((state) => state.video.searchData);
     if(!data) return
      const searchVideos = data.filter((res) => res.id.kind === "youtube#video");
-      console.log(searchVideos);
+     // console.log(searchVideos);
   return (
     <div className="w-full">
       <div className="lg:w-10/12 w-full  mx-auto space-y-2">

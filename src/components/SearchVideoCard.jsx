@@ -8,17 +8,18 @@ const SearchVideoCard = ({ data }) => {
      const time =(data.snippet.publishedAt);
  
      let date = new Date(time);
-  let year = getDate(date) + 1;
-   
-     if (year < 7) {
-          year = `${year} days`
-     }
-     else if (year >= 12 && year<24) {
-          year = "1 Years"
-     }
-     else if (year >= 24) {
-          year = "2 years"
-     }
+  let year = getDate(date) ;
+  //  console.log(year)
+  //    if (year < 7) {
+  //         year = `${year} days`
+  //    }
+  //    else if (year >= 12 && year<24) {
+  //         year = "1 Years"
+  //    }
+  //    else if (year >= 24) {
+  //         year = "2 years"
+  //    }
+
 
   return (
     <div className="lg:my-8 flex gap-3 lg:flex-row flex-col">
@@ -43,7 +44,7 @@ const SearchVideoCard = ({ data }) => {
 
           <p className="w-full "> {data.snippet.channelTitle} </p>
         </div>
-        <p className="lg:p-2 pb-1 font-semibold"> {year} ago ... </p>
+        <p className="lg:p-2 pb-1 font-semibold"> {year} days ago ... </p>
         <p className="text-sm opacity-80 lg:block md:block hidden">
           {data.snippet.description}
         </p>

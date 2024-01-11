@@ -6,18 +6,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setSearchOpen, toggleSideBar} from "../redux/slices/appSlice"
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaRegCircleUser } from "react-icons/fa6";
 import axios from 'axios';
 import { youtubeSearchApi } from '../utils/constants';
 import { chacheResults } from '../redux/slices/searchSlice';
+import { auth, provider } from '../utils/firebase';
+import { signInWithPopup } from 'firebase/auth';
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const [searchQuery , setSeacrchQuery] = useState("")
   const [suggestion, setSuggestion] = useState([]);
   const searchCache = useSelector(state => state.search);
-  const menu = useRef(null)
-  useEffect(() => {
+  const menu = useRef(null);
 
+  const userData = useSelector(state => state.user);
+    const [isLoggedIn, setIsLoggedIn] = useState(userData ? true : false);
+  //console.log(userData)
+  const signupUsingGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+      setIsLoggedIn(true)
+    })
+    .catch((error) => {
+      console.log(error)
+    }
+    )
+  }
+
+  useEffect(() => {
     const timerId = setTimeout(() => {
       if (searchCache[searchQuery]) {
        setSuggestion(searchCache[searchQuery]);
@@ -33,7 +52,6 @@ const Header = () => {
   }, [searchQuery]);
 
   async function getSearchSuggestion() {
-    //console.log(searchQuery)
     const res = await axios.get(youtubeSearchApi + searchQuery);
     //console.log(res.data)
        const searchSuggestions = [];
@@ -41,7 +59,7 @@ const Header = () => {
          if (!ele.split('"')[1] || index === 1) return;
          return searchSuggestions.push(ele.split('"')[1]);
        });
-       //console.log(searchSuggestions.slice(0,10));
+      
      setSuggestion(searchSuggestions.slice(0, 10));
     dispatch(
       chacheResults({
@@ -92,7 +110,7 @@ const Header = () => {
                 >
                   <FaMagnifyingGlass className="text-gray-500 text-xl" />
                   <NavLink
-                    onClick={()=> setSeacrchQuery(d)}
+                    onClick={() => setSeacrchQuery(d)}
                     to={`/results?search_query=${d}`}
                     className="text-xl font-semibold py-1"
                   >
@@ -112,7 +130,22 @@ const Header = () => {
           </button>
         </div>
         <div className="col-span-1 place-self-end hidden lg:block cursor-pointer my-auto">
-          <FaUserCircle className="text-3xl" />
+          {/* <FaUserCircle className="text-3xl" /> */}
+          {isLoggedIn ? (
+            <img
+              className="w-10 rounded-full"
+              src={userData.photoURL}
+              alt=""
+            />
+          ) : (
+            <div
+              onClick={signupUsingGoogle}
+              className="flex items-start gap-3 border px-2 py-1 rounded-2xl border-slate-400"
+            >
+              <FaRegCircleUser className="text-2xl text-blue-600" />
+              <p className="text-blue-600 text-sm font-semibold">Sign In</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
