@@ -2,7 +2,7 @@ import {  Provider, useDispatch } from "react-redux";
 import store from "./redux/store"
 import Body from "./components/Body";
 import { useEffect } from "react";
-import { addUser } from "./redux/slices/userSlice";
+import { addUser, removeUser } from "./redux/slices/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./utils/firebase";
 
@@ -15,6 +15,9 @@ const dispatch = useDispatch()
         dispatch(addUser({ uid, displayName, email, photoURL }));
         
       }
+      else {
+        dispatch(removeUser())
+     }
     });
 
   } , [])

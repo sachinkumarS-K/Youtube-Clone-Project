@@ -11,7 +11,9 @@ import axios from 'axios';
 import { youtubeSearchApi } from '../utils/constants';
 import { chacheResults } from '../redux/slices/searchSlice';
 import { auth, provider } from '../utils/firebase';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
+import { removeUser } from '../redux/slices/userSlice';
+
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -21,7 +23,8 @@ const Header = () => {
   const menu = useRef(null);
 
   const userData = useSelector(state => state.user);
-    const [isLoggedIn, setIsLoggedIn] = useState(userData ? true : false);
+  const [isLoggedIn, setIsLoggedIn] = useState(userData ? true : false);
+
   //console.log(userData)
   const signupUsingGoogle = () => {
   signInWithPopup(auth, provider)
@@ -129,14 +132,35 @@ const Header = () => {
             </NavLink>
           </button>
         </div>
-        <div className="col-span-1 place-self-end hidden lg:block cursor-pointer my-auto">
-          {/* <FaUserCircle className="text-3xl" /> */}
-          {isLoggedIn ? (
-            <img
-              className="w-10 rounded-full"
-              src={userData.photoURL}
-              alt=""
-            />
+        <div className="col-span-1  place-self-end hidden lg:block cursor-pointer my-auto">
+         
+          {userData && Object.keys(userData).length > 0 ? (
+            <div className=''>
+              <img
+                onClick={() => {
+                  signOut(auth)
+                    .then(() => {
+                      setIsLoggedIn(false);
+                    })
+                    .catch((error) => {
+                      // An error happened.
+                    });
+
+                }
+                }
+                className="object-cover w-10 h-10 rounded-full ring  ring-slate-200"
+                src={userData?.photoURL}
+                alt=""
+              />
+              <div className='absolute top-5 z-20 
+              '>
+                {/* <ul className='text-black font-bold text-xl'>
+                  <li>Profile</li>
+                  <li>Sign Out</li>
+                </ul> */}
+               
+              </div>
+            </div>
           ) : (
             <div
               onClick={signupUsingGoogle}

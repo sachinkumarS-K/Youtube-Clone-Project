@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-     videoData: null,
-     channelData: null,
+  videoData: null,
+  channelData: null,
   searchData: null,
-     searchChannelData : null
-}
+  searchChannelData: null,
+  nextPageToken : ""
+};
 
 const videoSlice = createSlice({
   name: "video",
@@ -25,6 +26,9 @@ const videoSlice = createSlice({
     },
     setChannelDate: (state) => {
       state.searchChannelData = null
+    },
+    setToken: (state, action) => {
+      state.nextPageToken = action.payload
     }
   },
 });
@@ -35,6 +39,7 @@ export const {
   addSearchVideo,
   addSearchChannelData,
   setChannelDate,
+  setToken,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;

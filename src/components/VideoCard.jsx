@@ -54,7 +54,7 @@ const VideoCard = ({ videoData, channelData }) => {
           {" "}
           <img
             className="w-12 rounded-full h-8 "
-            src={channelData.items[0].snippet.thumbnails.high.url}
+            src={channelData?.items[0]?.snippet?.thumbnails?.high.url}
             alt=""
           />{" "}
           {videoData.snippet.title}{" "}
